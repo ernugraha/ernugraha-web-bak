@@ -13,8 +13,6 @@ layout: null
   }{% if forloop.last == false %},{% endif %}
   {% endfor %}
 
-  ## SEARCH EXCLUDE
-
   {% assign filtered_pages = site.html_pages | where_exp: "item", "item.search_exclude != true" %}
   {% for page in filtered_pages %}
     {% if page.title != "{title}" and page.title != "404 - Page not found" %}
