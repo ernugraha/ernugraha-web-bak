@@ -152,28 +152,28 @@ img {
 /* --- Navbar --- */
 
 .navbar-custom {
-  background: rgba(15, 15, 15, 0.42);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: var(--navbar-col);
+  border-bottom: 1px solid var(--navbar-border-col);
   font-family: var(--header-font);
   {% if site.navbar-img %}
     background-image: url({{ site.navbar-img | relative_url }});
     background-attachment: fixed;
   {% endif %}
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  backdrop-filter: blur(12px) saturate(180%);
   -webkit-transition:
     padding .5s ease-in-out,
     background-color .25s ease,
     backdrop-filter .25s ease,
     box-shadow .25s ease,
-    border-color .25s ease;
+    border-color .25s ease,
+    color .25s ease;
   -moz-transition: padding .5s ease-in-out;
   transition:
     padding .5s ease-in-out,
     background-color .25s ease,
     backdrop-filter .25s ease,
     box-shadow .25s ease,
-    border-color .25s ease;
+    border-color .25s ease,
+    color .25s ease;
 }
 
 .navbar-custom,
@@ -183,6 +183,7 @@ img {
   padding-bottom: 0;
 }
 
+/* === Apple-style state saat discroll === */
 .navbar-custom.nav-scrolled {
   background: rgba(15, 15, 15, 0.62);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -238,6 +239,13 @@ img {
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav .nav-link {
   font-weight: 800;
+  color: var(--navbar-text-col);
+  transition: color .25s ease;
+}
+
+/* teks jadi terang saat navbar discroll */
+.navbar-custom.nav-scrolled .navbar-brand,
+.navbar-custom.nav-scrolled .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.92);
 }
 
@@ -252,6 +260,10 @@ img {
 }
 
 .navbar-custom .navbar-toggler[aria-expanded="true"] {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.navbar-custom.nav-scrolled .navbar-toggler[aria-expanded="true"] {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -284,24 +296,35 @@ img {
   }
 }
 
+/* hover desktop normal */
 @media (min-width: 1200px) {
   .navbar-custom .nav-item.dropdown:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* hover desktop saat scroll */
+@media (min-width: 1200px) {
+  .navbar-custom.nav-scrolled .nav-item.dropdown:hover {
     background: rgba(255, 255, 255, 0.06);
   }
 }
 
 .navbar-custom .nav-item.dropdown.show {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.navbar-custom.nav-scrolled .nav-item.dropdown.show {
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* dropdown default = theme biasa */
 .navbar-custom .nav-item.dropdown .dropdown-menu {
   margin-top: 0;
   font-size: 1em;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 0;
   padding: 0;
-  background: rgba(25, 25, 25, 0.72);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  backdrop-filter: blur(18px) saturate(180%);
+  background-color: var(--navbar-col);
   {% if site.navbar-var-length %}
   min-width: 100%;
   {% else %}
@@ -311,15 +334,30 @@ img {
   {% endif %}
 }
 
+/* dropdown saat scroll = blur */
+.navbar-custom.nav-scrolled .nav-item.dropdown .dropdown-menu {
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(25, 25, 25, 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+}
+
 .navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item {
   padding: 0.625rem;
-  background: transparent;
+  background-color: var(--navbar-col);
   text-decoration: none !important;
   font-weight: normal;
-  color: rgba(255,255,255,0.9);
+  color: var(--navbar-text-col);
+  transition: color .25s ease, background-color .25s ease;
   {% unless site.navbar-var-length %}
   white-space: normal;
   {% endunless %}
+}
+
+/* item dropdown saat scroll */
+.navbar-custom.nav-scrolled .nav-item.dropdown .dropdown-menu .dropdown-item {
+  background: transparent;
+  color: rgba(255,255,255,0.9);
 }
 
 @media (min-width: 1200px) {
@@ -329,19 +367,32 @@ img {
 
   .navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item {
     padding-left: 0.625rem;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid var(--navbar-border-col);
     border-width: 0 1px 1px;
   }
 
   .navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item:first-child {
     border-top-width: 1px;
   }
+
+  .navbar-custom.nav-scrolled .nav-item.dropdown .dropdown-menu .dropdown-item {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-width: 0 1px 1px;
+  }
+
+  .navbar-custom.nav-scrolled .nav-item.dropdown .dropdown-menu .dropdown-item:first-child {
+    border-top-width: 1px;
+  }
 }
 
 @media (max-width: 1199px) {
   .navbar-custom .navbar-collapse {
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid var(--navbar-border-col);
     margin: 0 -1rem;
+  }
+
+  .navbar-custom.nav-scrolled .navbar-collapse {
+    border-top: 1px solid rgba(255,255,255,0.08);
     background: rgba(20, 20, 20, 0.72);
     -webkit-backdrop-filter: blur(18px) saturate(180%);
     backdrop-filter: blur(18px) saturate(180%);
@@ -356,6 +407,10 @@ img {
   }
 
   .navbar-custom .nav-item.dropdown.show {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar-custom.nav-scrolled .nav-item.dropdown.show {
     background: rgba(255, 255, 255, 0.08);
   }
 
@@ -364,15 +419,26 @@ img {
   }
 }
 
+/* hover normal */
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus,
 .navbar-custom .navbar-nav .nav-link:hover,
-.navbar-custom .navbar-nav .nav-link:focus {
+.navbar-custom .navbar-nav .nav-link:focus,
+.navbar-custom .navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar-custom .navbar-nav .dropdown-menu .dropdown-item:focus {
+  color: var(--hover-col);
+}
+
+/* hover saat scroll */
+.navbar-custom.nav-scrolled .navbar-brand:hover,
+.navbar-custom.nav-scrolled .navbar-brand:focus,
+.navbar-custom.nav-scrolled .navbar-nav .nav-link:hover,
+.navbar-custom.nav-scrolled .navbar-nav .nav-link:focus {
   color: #ffffff;
 }
 
-.navbar-custom .navbar-nav .dropdown-menu .dropdown-item:hover,
-.navbar-custom .navbar-nav .dropdown-menu .dropdown-item:focus {
+.navbar-custom.nav-scrolled .navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar-custom.nav-scrolled .navbar-nav .dropdown-menu .dropdown-item:focus {
   color: #ffffff;
   background: rgba(255,255,255,0.08);
 }
