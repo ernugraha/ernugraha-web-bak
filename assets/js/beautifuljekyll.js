@@ -117,30 +117,46 @@ let BeautifulJekyllJS = {
     }
   },
 
-  initSearch : function() {
-    if (!document.getElementById("beautifuljekyll-search-overlay")) {
-      return;
-    }
-
-    $("#nav-search-link").click(function(e) {
-      e.preventDefault();
-      $("#beautifuljekyll-search-overlay").show();
-      $("#nav-search-input").focus().select();
-      $("body").addClass("overflow-hidden");
-    });
-    $("#nav-search-exit").click(function(e) {
-      e.preventDefault();
-      $("#beautifuljekyll-search-overlay").hide();
-      $("body").removeClass("overflow-hidden");
-    });
-    $(document).on('keyup', function(e) {
-      if (e.key == "Escape") {
-        $("#beautifuljekyll-search-overlay").hide();
-        $("body").removeClass("overflow-hidden");
-      }
-    });
+initSearch : function() {
+  if (!document.getElementById("beautifuljekyll-search-overlay")) {
+    return;
   }
-};
+
+  const overlay = $("#beautifuljekyll-search-overlay");
+
+  function openSearch() {
+    overlay.addClass("search-open");
+    $("#nav-search-input").focus().select();
+    $("body").addClass("overflow-hidden");
+  }
+
+  function closeSearch() {
+    overlay.removeClass("search-open");
+    $("body").removeClass("overflow-hidden");
+  }
+
+  $("#nav-search-link").click(function(e) {
+    e.preventDefault();
+    openSearch();
+  });
+
+  $("#nav-search-exit").click(function(e) {
+    e.preventDefault();
+    closeSearch();
+  });
+
+  overlay.click(function(e) {
+    if (e.target === this) {
+      closeSearch();
+    }
+  });
+
+  $(document).on("keyup", function(e) {
+    if (e.key === "Escape") {
+      closeSearch();
+    }
+  });
+}
 
 // 2fc73a3a967e97599c9763d05e564189
 
