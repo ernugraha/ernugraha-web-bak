@@ -2,18 +2,38 @@
 
 <div id="beautifuljekyll-search-overlay" class="search-hidden">
 
-  <div id="nav-search-exit" title="Exit search">✕</div>
-  <input type="text" id="nav-search-input" placeholder="Search">
-  <ul id="search-results-container"></ul>
-  
+  <div class="search-backdrop"></div>
+
+  <div class="search-modal">
+
+    <div id="nav-search-exit" title="Close Search">
+      <i class="fas fa-times"></i>
+    </div>
+
+    <input
+      type="text"
+      id="nav-search-input"
+      placeholder="Search anything..."
+      autocomplete="off"
+      spellcheck="false">
+
+    <ul id="search-results-container"></ul>
+
+  </div>
+
   <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+
   <script>
     SimpleJekyllSearch({
-      searchInput: document.getElementById('nav-search-input'),
-      resultsContainer: document.getElementById('search-results-container'),
-      json: '{{ site.baseurl }}/assets/data/searchcorpus.json' 
+      searchInput: document.getElementById("nav-search-input"),
+      resultsContainer: document.getElementById("search-results-container"),
+      json: "{{ site.baseurl }}/assets/data/searchcorpus.json",
+      noResultsText: "<li>No results found.</li>",
+      limit: 15,
+      fuzzy: false
     });
   </script>
+
 </div>
 
 {% endif %}
