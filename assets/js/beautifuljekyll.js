@@ -142,6 +142,76 @@ let BeautifulJekyllJS = {
   }
 };
 
+/* ===== Search animations ===== */
+
+#beautifuljekyll-search-overlay {
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+#beautifuljekyll-search-overlay.search-opening,
+#beautifuljekyll-search-overlay.search-open {
+  opacity: 1;
+}
+
+#nav-search-input,
+#search-results-container,
+#nav-search-exit {
+  opacity: 0;
+  transform: translateY(-20px) scale(.97);
+}
+
+#beautifuljekyll-search-overlay.search-open #nav-search-input {
+  animation: bj-search-input .35s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+#beautifuljekyll-search-overlay.search-open #nav-search-exit {
+  animation: bj-search-input .25s ease forwards;
+}
+
+#beautifuljekyll-search-overlay.search-open #search-results-container {
+  animation: bj-search-results .35s ease .08s forwards;
+}
+
+#beautifuljekyll-search-overlay.search-closing #nav-search-input,
+#beautifuljekyll-search-overlay.search-closing #nav-search-exit,
+#beautifuljekyll-search-overlay.search-closing #search-results-container {
+  animation: bj-search-out .20s ease forwards;
+}
+
+@keyframes bj-search-input {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bj-search-results {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bj-search-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(.98);
+  }
+}
+
 // 2fc73a3a967e97599c9763d05e564189
 
 document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
