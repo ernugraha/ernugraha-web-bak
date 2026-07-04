@@ -1230,3 +1230,78 @@ pre {
     display: inline-block;
   }
 }
+
+/* ===== Apple Style Search Animation ===== */
+
+#beautifuljekyll-search-overlay {
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  background: rgba(20,20,20,.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  transition:
+    opacity .28s ease,
+    visibility .28s ease;
+}
+
+#beautifuljekyll-search-overlay.search-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#beautifuljekyll-search-overlay.search-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#nav-search-input {
+  transform: translateY(-35px) scale(.96);
+  opacity: 0;
+
+  transition:
+    transform .42s cubic-bezier(.22,1,.36,1),
+    opacity .32s ease;
+}
+
+#beautifuljekyll-search-overlay.search-open #nav-search-input {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+#search-results-container {
+  opacity: 0;
+  transform: translateY(18px);
+
+  transition:
+    transform .30s ease .08s,
+    opacity .30s ease .08s;
+}
+
+#beautifuljekyll-search-overlay.search-open #search-results-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#nav-search-exit {
+  opacity: 0;
+  transform: rotate(-90deg);
+
+  transition:
+    transform .25s ease,
+    opacity .25s ease;
+}
+
+#beautifuljekyll-search-overlay.search-open #nav-search-exit {
+  opacity: 1;
+  transform: rotate(0);
+}
