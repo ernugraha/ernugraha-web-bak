@@ -122,38 +122,23 @@ initSearch : function() {
     return;
   }
 
-  const overlay = $("#beautifuljekyll-search-overlay");
-
-  function openSearch() {
-    overlay.addClass("search-open");
-    $("#nav-search-input").focus().select();
-    $("body").addClass("overflow-hidden");
-  }
-
-  function closeSearch() {
-    overlay.removeClass("search-open");
-    $("body").removeClass("overflow-hidden");
-  }
-
   $("#nav-search-link").click(function(e) {
     e.preventDefault();
-    openSearch();
+    $("#beautifuljekyll-search-overlay").show();
+    $("#nav-search-input").focus().select();
+    $("body").addClass("overflow-hidden");
   });
 
   $("#nav-search-exit").click(function(e) {
     e.preventDefault();
-    closeSearch();
-  });
-
-  overlay.click(function(e) {
-    if (e.target === this) {
-      closeSearch();
-    }
+    $("#beautifuljekyll-search-overlay").hide();
+    $("body").removeClass("overflow-hidden");
   });
 
   $(document).on("keyup", function(e) {
     if (e.key === "Escape") {
-      closeSearch();
+      $("#beautifuljekyll-search-overlay").hide();
+      $("body").removeClass("overflow-hidden");
     }
   });
 }
