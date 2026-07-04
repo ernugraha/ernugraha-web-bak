@@ -117,30 +117,109 @@ let BeautifulJekyllJS = {
     }
   },
 
-  initSearch : function() {
-    if (!document.getElementById("beautifuljekyll-search-overlay")) {
-      return;
-    }
+initSearch : function() {
+  if (!document.getElementById("beautifuljekyll-search-overlay")) {
+    return;
+  }
 
-    $("#nav-search-link").click(function(e) {
-      e.preventDefault();
-      $("#beautifuljekyll-search-overlay").show();
-      $("#nav-search-input").focus().select();
-      $("body").addClass("overflow-hidden");
+  const overlay = $("#beautifuljekyll-search-overlay");
+  const input = $("#nav-search-input");
+
+  function openSearch() {
+    if (overlay.hasClass("search-open")) return;
+
+    overlay
+      .stop(true, true)
+      .show()
+      .removeClass("search-closing")
+      .addClass("search-opening");
+
+    requestAnimationFrame(function () {
+      overlay
+        .removeClass("search-opening")
+        .addClass("search-open");
+
+      input.trigger("focus").trigger("select");
     });
-    $("#nav-search-exit").click(function(e) {
-      e.preventDefault();
-      $("#beautifuljekyll-search-overlay").hide();
+
+    $("body").addClass("overflow-hidden");
+  }
+
+  function closeSearch() {
+    if (!overlay.hasClass("search-open")) return;
+
+    overlay
+      .removeClass("search-open")
+      .addClass("search-closing");
+
+    setTimeout(function () {
+      overlay
+        .hide()
+        .removeClass("search-closing");
+
       $("body").removeClass("overflow-hidden");
+    }, 220);
+  }
+
+  // Klik ikon Search
+  $("#nav-search-link")
+    .off("click")
+    .on("click", function(e) {
+      e.preventDefault();
+      openSearch();
     });
-    $(document).on('keyup', function(e) {
-      if (e.key == "Escape") {
-        $("#beautifuljekyll-search-overlay").hide();
-        $("body").removeClass("overflow-hidden");
+
+  // Tombol X
+  $("#nav-search-exit")
+    .off("click")
+    .on("click", function(e) {
+      e.preventDefault();
+      closeSearch();
+    });
+
+  // Klik area kosong
+  overlay
+    .off("click")
+    .on("click", function(e) {
+      if (e.target === this) {
+        closeSearch();
       }
     });
-  }
-};
+
+  // Keyboard shortcut
+  $(document)
+    .off("keydown.search")
+    .on("keydown.search", function(e) {
+
+      // ESC
+      if (e.key === "Escape") {
+        closeSearch();
+        return;
+      }
+
+      // Ctrl + K / Cmd + K
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+
+        if (overlay.hasClass("search-open")) {
+          closeSearch();
+        } else {
+          openSearch();
+        }
+
+        return;
+      }
+
+      // Tekan "/" untuk membuka search
+      if (
+        e.key === "/" &&
+        !$(e.target).is("input, textarea")
+      ) {
+        e.preventDefault();
+        openSearch();
+      }
+    });
+}
 
 // 2fc73a3a967e97599c9763d05e564189
 
