@@ -10,7 +10,7 @@ cover-img: /assets/img/os/vscode.png
 
 # Introduction
 
-As you know, VSCode documentation is SUCKS (for those who are too lazy to read). So I made this article for myself and my readers (if there are any), on how to install VSCode easily.
+As you might know, VSCode documentation is SUCKS (for those who are too lazy to read). So I made this article for myself and my readers (if there are any), on how to install VSCode easily.
 
 ## Tutorial
 
@@ -22,15 +22,15 @@ First, you need to:
 - [Mac](#mac)
 
 ## Windows
-Head to this link [https://code.visualstudio.com/download](https://code.visualstudio.com/download).
+1. Head to this link [https://code.visualstudio.com/download](https://code.visualstudio.com/download).
 
-Then, click the Windows 10/11 Download section.
+2. Then, click the Windows 10/11 Download section.
 
 <img src="/assets/img/os/vscode_w.png" alt="drawing" width="320"/>
 
-After that open the installer, then just click Next, Next, Next until done.
+3. After that open the installer, then just click Next, Next, Next until done.
 
-Then you're done!
+4. Launch from menu, then you're done!
 
 ## Linux
 
@@ -80,7 +80,9 @@ After that launch it from main menu.
 
 ## Mac
 
-### Coming Soon
+***Coming Soon***
+
+________________________
 
 # Conclusion
 So, that's how it is, thank you for reading this hastily put together article.
