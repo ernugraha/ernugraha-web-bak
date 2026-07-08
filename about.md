@@ -5,13 +5,24 @@ subtitle: My Portofolio
 search_exclude: true
 ---
 
-My name is ernugraha. I have the following qualities:
+Yo wassup internet, my name (not real name) is ernugraha. I like to doing wierd linux stuff, and i like do gaming.
 
-- I really like linux
-- I also like Raspberry Pi
+And this thing that i can do/help:
+- Little HTML knowledge
+- Doing easy pc repair
+- Crashing your system
+- Watching YouTube
+- Recommending something
+- Making account for you
+- Help you from tired fixing stuff
+- Making you farms for Minecraft (i will make the posts)
+- etc
 
-What else do you need?
+Still not much? Contact me so i will make posts matching for you!
 
-### My story
+### Contact:
+Email: [eiji.royyan.nugraha@gmail.com](mailto:eiiji.royyan.nugraha@gmail.com)
 
-Just a little boy who lives in Indonesia
+Phone: *(Currently not available)*
+
+Discord: *(Coming soon)*
