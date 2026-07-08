@@ -24,9 +24,7 @@ First, you need to:
 ## Windows
 1. Head to this link [https://code.visualstudio.com/download](https://code.visualstudio.com/download).
 
-2. Then, click the Windows 10/11 Download section.
-
-<img src="/assets/img/os/vscode_w.png" alt="drawing" width="320"/>
+2. Then, click the Windows 10/11 Download section. <img src="/assets/img/os/vscode_w.png" alt="drawing" width="320"/>
 
 3. After that open the installer, then just click Next, Next, Next until done.
 
@@ -36,6 +34,8 @@ First, you need to:
 
 {: .box-not}
 Tested on Debian 13 (Trixie)
+
+
 
 ### 1. Update your system
 ```
