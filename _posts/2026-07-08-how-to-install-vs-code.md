@@ -32,7 +32,7 @@ First, you need to:
 
 ## Linux
 
-{: .box-not}
+{: .box-note}
 Tested on Debian 13 (Trixie)
 
 
