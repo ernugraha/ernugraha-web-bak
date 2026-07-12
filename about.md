@@ -5,9 +5,10 @@ subtitle: My Portofolio
 search_exclude: true
 ---
 
-<img src="/assets/img/avaicon.png" alt="ava" width="120"/>
 
-Yo wassup internet, my name (not real name) is ernugraha. I like to doing wierd linux stuff, and i like do gaming.
+# Who i am
+
+<img src="/assets/img/avaicon.png" alt="ava" width="100"/> Yo wassup internet, my name (not real name) is ernugraha. I like to doing wierd linux stuff, and i like do gaming.
 
 ### And this thing that i can do/help:
 - Raspberry Pi Stuff
@@ -24,7 +25,7 @@ Yo wassup internet, my name (not real name) is ernugraha. I like to doing wierd 
 Still not much? Contact me so i will make posts matching for you!
 
 ### Contact:
-Email: [eiji.royyan.nugraha@gmail.com](mailto:eiiji.royyan.nugraha@gmail.com)
+Email: [ernugraha@ernugraha.com](mailto:ernugraha@ernugraha.com)
 
 Phone: *(Currently not available)*
 
