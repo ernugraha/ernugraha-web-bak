@@ -6,96 +6,65 @@ tags: [gaming, linux, software]
 comments: true
 mathjax: true
 author: ernugraha
-cover-img: /assets/img/path.jpg
-thumbnail-img: /assets/img/thumb.png
-share-img: /assets/img/path.jpg
+cover-img: /assets/img/os/medal.png
 ---
 
-{: .box-success}
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/tables/etc.<br/>I also encourage you to look at the [code that created this post](https://raw.githubusercontent.com/daattali/beautiful-jekyll/master/_posts/2020-02-28-sample-markdown.md) to learn some more advanced tips about using markdown in Beautiful Jekyll.
+# Introduction
+Hi gamers! You know [Medal.tv](https://medal.tv/) right? An application for recording unexpected clips. But unfortunately, for Linux content creators this application is not available (just look at the download which goes straight to Windows), so the Linux community created an application called Vice, 99% similar to Medal.
 
-**Here is some bold text**
+## Table of Content
+- [Introduction](#introduction)
+- [Set up the dependencies](#set-up-the-dependencies)
+- [Installing](#installing)
 
-## Here is a secondary heading
+## Set up the dependencies
 
-[This is a link to a different site](https://deanattali.com/) and [this is a link to a section inside this page](#local-urls).
-
-Here's a table:
-
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
-
-You can use [MathJax](https://www.mathjax.org/) to write LaTeX expressions. For example:
-When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
-
-How about a yummy crepe?
-
-![Crepe](https://beautifuljekyll.com/assets/img/crepe.jpg)
-
-It can also be centered!
-
-![Crepe](https://beautifuljekyll.com/assets/img/crepe.jpg){: .mx-auto.d-block :}
-
-Here's a code chunk:
-
-~~~
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-~~~
-
-And here is the same code with syntax highlighting:
-
-```javascript
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
+### 1. Install git
+```bash
+sudo apt install git
 ```
 
-And here is the same code yet again but with line numbers:
+### 2. Clone the repo
 
-{% highlight javascript linenos %}
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-{% endhighlight %}
+Debian:
+```bash
+git clone https://github.com/eklonofficial/Vice
+```
 
-## Boxes
-You can add notification, warning and error boxes like this:
+Arch / Manjaro / CachyOS / any Arch-based distro:
+```bash
+yay -S vice-clipper
+```
 
-### Notification
 
-{: .box-note}
-**Note:** This is a notification box.
+## Installing
 
-### Warning
+1. Go to vice directory
+```bash
+cd Vice
+```
 
-{: .box-warning}
-**Warning:** This is a warning box.
+2. Run install script
+```bash
+chmod +x ./install.sh && ./install.sh
+```
+If you get asked password like this:
+```
+[sudo] password for ernugraha: 
+```
+Type your password.
 
-### Error
+3. After finished, type
+```bash
+vice
+```
+or open from your main menu.
 
-{: .box-error}
-**Error:** This is an error box.
+### And well done
 
-## Local URLs in project sites {#local-urls}
-
-When hosting a *project site* on GitHub Pages (for example, `https://USERNAME.github.io/MyProject`), URLs that begin with `/` and refer to local files may not work correctly due to how the root URL (`/`) is interpreted by GitHub Pages. You can read more about it [in the FAQ](https://beautifuljekyll.com/faq/#links-in-project-page). To demonstrate the issue, the following local image will be broken **if your site is a project site:**
-
-![Crepe](/assets/img/crepe.jpg)
-
-If the above image is broken, then you'll need to follow the instructions [in the FAQ](https://beautifuljekyll.com/faq/#links-in-project-page). Here is proof that it can be fixed:
-
-![Crepe]({{ '/assets/img/crepe.jpg' | relative_url }})
+<img src="/assets/img/os/medal2.png" alt="drawing" width="320"/>
 
 <details markdown="1">
-<summary>Click here!</summary>
-Here you can see an **expandable** section
+<summary>Credits:</summary>
+[eklonofficial](https://github.com/eklonofficial/Vice)
 </details>

@@ -17,7 +17,7 @@ Live wallpapers (moving wallpapers) are used to enhance the visual aesthetics of
 ### Table of Content
 - [Introduction](#introduction)
 - [Set up the dependencies](#set-up-the-dependencies)
-- [Flashing Images](#flashing-images)
+- [Setting up](#setting-up-the-extension)
 
 ## Set up the dependencies
 1.Install this packages:
